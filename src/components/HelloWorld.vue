@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useCounterStore } from '../stores/counter';
-const store = useCounterStore();
+import { useCounterStore1 } from '../stores/counter1';
+const store = useCounterStore1();
 
 store.$onAction(
-  (option) => {
+  (option: any) => {
     // 这个option总共有以下几个属性
     let { after, onError, args, name, store } = option;
     // after是一个函数，这个函数的参数是一个回调函数，这个回调函数会在

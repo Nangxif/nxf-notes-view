@@ -197,6 +197,14 @@ function createOptionsStore(id, options, pinia) {
     // 我们需要将状态转成ref，因为普通值是没有响应式的，需要转换成ref才具备响应式
     const localState = toRefs(pinia.state.value[id]);
     // getters
+    // 解决this问题
+    /**
+     * const store = useCounter();
+     * store.increment();
+     * 这么写increment的this指向肯定是store，如果通过解构呢？
+     * const { increment } = useCounter();
+     * increment(); 如果不做处理的话，this指向就不是store了
+     * */
     return Object.assign(
       localState, // 用户的状态
       actions, // 用户的动作
